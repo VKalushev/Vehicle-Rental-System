@@ -21,7 +21,7 @@ public class Invoice {
 //        this.insuranceCostPerDay = (rental.getInsuranceRate() * rental.getVehicle().getValue());
     }
 
-    private void calculateRentalAndInsuranceCost(){
+    private void calculateTotalRentalAndInsuranceCost(){
         double rentalCost = this.actualRentalDays * this.rental.getDailyRentalCost();
         double insuranceCost = this.insuranceCostPerDay * this.actualRentalDays;
 
@@ -43,7 +43,7 @@ public class Invoice {
         System.out.printf("Total: $%.2f%n",totalCost);
     }
 
-    private void calculateInsuranceCost(){
+    private void calculateDailyInsuranceCost(){
         double insuranceRate = 0;
         double insurancePerDay = 0;
         switch (rental.getVehicle().getType()) {
@@ -100,10 +100,10 @@ public class Invoice {
         System.out.println();
 
         System.out.printf("Rental cost per day: $%.2f%n",this.rental.getDailyRentalCost());
-        calculateInsuranceCost();
+        calculateDailyInsuranceCost();
         System.out.println();
 
-        calculateRentalAndInsuranceCost();
+        calculateTotalRentalAndInsuranceCost();
         System.out.println("X".repeat(10));
     }
 }
